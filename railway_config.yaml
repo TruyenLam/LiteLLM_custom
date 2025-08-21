@@ -90,8 +90,9 @@ litellm_settings:
   num_retries: 3
   request_timeout: 300
   telemetry: false
-  success_callback: ["prometheus"]
-  failure_callback: ["prometheus"]
+  # Remove prometheus callbacks for free version
+  # success_callback: ["prometheus"]
+  # failure_callback: ["prometheus"]
 
 general_settings:
   # Store models in database for dynamic management
@@ -108,6 +109,16 @@ general_settings:
   
   # Logging
   set_verbose: false
+  
+  # Budget and usage tracking
+  track_cost_per_request: true
+  
+  # Enable custom callbacks for budget tracking
+  custom_key_generate: true
+  
+  # Disable enterprise features to avoid warnings
+  disable_spend_logs: false
+  disable_prometheus_metrics: true
 
 # Environment variables that Railway should set:
 # AIMLAPI_KEY=your_aimlapi_key

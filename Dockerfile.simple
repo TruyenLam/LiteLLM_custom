@@ -1,11 +1,21 @@
 # Simple LiteLLM Dockerfile for Railway
 FROM ghcr.io/berriai/litellm:main-stable
 
-# Copy configuration
+# Install additional packages for budget management
+RUN pip install psycopg2-binary flask requests
+
+# Copy configuration and budget system
 COPY railway_config.yaml /app/config.yaml
+COPY budget_manager.py /app/
+COPY budget_middleware.py /app/
+COPY budget_api.py /app/
+COPY budget_cli.py /app/
 
 # Set environment variables
 ENV PORT=4000
+ENV DISABLE_PROMETHEUS=true
+ENV LITELLM_LICENSE=""
+ENV PYTHONPATH=/app
 
 # Start LiteLLM
 CMD ["--config", "/app/config.yaml"]

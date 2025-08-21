@@ -16,6 +16,10 @@ WORKDIR /app
 # Copy configuration
 COPY railway_config.yaml /app/config.yaml
 
+# Set environment variables to disable enterprise warnings
+ENV DISABLE_PROMETHEUS=true
+ENV LITELLM_LICENSE=""
+
 # Expose port
 EXPOSE 4000
 
