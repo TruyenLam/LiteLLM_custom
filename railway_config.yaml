@@ -90,9 +90,9 @@ litellm_settings:
   num_retries: 3
   request_timeout: 300
   telemetry: false
-  # Remove prometheus callbacks for free version
-  # success_callback: ["prometheus"]
-  # failure_callback: ["prometheus"]
+  # Enable basic callbacks for tracking (no enterprise features)
+  success_callback: ["budget_tracker"]
+  failure_callback: ["budget_tracker"]
 
 general_settings:
   # Store models in database for dynamic management
@@ -107,18 +107,26 @@ general_settings:
   # Health check settings
   health_check_interval: 300
   
-  # Logging
+  # Logging settings
   set_verbose: false
   
-  # Budget and usage tracking
+  # Budget and usage tracking (free features)
   track_cost_per_request: true
   
-  # Enable custom callbacks for budget tracking
+  # Enable all free features
   custom_key_generate: true
+  ui_access_mode: "admin_only"
   
-  # Disable enterprise features to avoid warnings
-  disable_spend_logs: false
+  # Completely disable enterprise features
+  disable_spend_logs: true
   disable_prometheus_metrics: true
+  disable_enterprise_features: true
+  
+  # Override enterprise checks
+  litellm_license: ""
+  
+  # Custom budget integration
+  enable_custom_budget: true
 
 # Environment variables that Railway should set:
 # AIMLAPI_KEY=your_aimlapi_key

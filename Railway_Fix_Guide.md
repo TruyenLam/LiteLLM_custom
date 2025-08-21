@@ -45,13 +45,28 @@ git push
 
 ### 3. Set Environment Variables trên Railway:
 ```
+# Core configuration
 AIMLAPI_KEY=b0197edcd9104cd1ab78aaf148ce609a
 LITELLM_MASTER_KEY=sk-hWv1u2fX3yG4zJ5kT6p7qR8sT9uV0wX1
 LITELLM_SALT_KEY=sk-aB2c3D4eF5g6H7i8J9k0L1m2N3o4P5qR
 DATABASE_URL=postgresql://llmproxy:bTBwUQHt7VTltFyB@34.136.3.30:5432/litellm
 STORE_MODEL_IN_DB=True
-DISABLE_PROMETHEUS=true
+
+# Disable ALL enterprise features (no license needed)
 LITELLM_LICENSE=""
+LITELLM_ENTERPRISE=false
+DISABLE_PROMETHEUS=true
+LITELLM_DISABLE_PROMETHEUS=true
+DISABLE_SPEND_LOGS=true
+LITELLM_DISABLE_SPEND_LOGS=true
+DISABLE_ENTERPRISE_FEATURES=true
+LITELLM_DISABLE_ENTERPRISE=true
+LITELLM_DISABLE_TELEMETRY=true
+DISABLE_TELEMETRY=true
+
+# Enable custom features
+ENABLE_CUSTOM_BUDGET=true
+USE_CUSTOM_CALLBACKS=true
 ```
 
 ### 4. Test deployment:

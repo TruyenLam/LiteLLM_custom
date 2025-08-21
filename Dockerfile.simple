@@ -10,12 +10,16 @@ COPY budget_manager.py /app/
 COPY budget_middleware.py /app/
 COPY budget_api.py /app/
 COPY budget_cli.py /app/
+COPY budget_callback.py /app/
+COPY start_litellm.py /app/
 
 # Set environment variables
 ENV PORT=4000
 ENV DISABLE_PROMETHEUS=true
 ENV LITELLM_LICENSE=""
+ENV DISABLE_ENTERPRISE_FEATURES=true
+ENV LITELLM_DISABLE_TELEMETRY=true
 ENV PYTHONPATH=/app
 
-# Start LiteLLM
-CMD ["--config", "/app/config.yaml"]
+# Start with custom script
+CMD ["python", "/app/start_litellm.py"]
