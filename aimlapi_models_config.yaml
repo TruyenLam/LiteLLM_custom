@@ -1,0 +1,40 @@
+model_list:
+  - model_name: "chatgpt-4o"
+    litellm_params:
+      model: "openai/gpt-4o"
+      api_base: "https://api.aimlapi.com/v1"
+      api_key: "os.environ/AIMLAPI_KEY"
+    model_info:
+      description: "ChatGPT-4o model via AIMLAPI"
+      provider: "aimlapi"
+      max_tokens: 128000
+      supports_function_calling: true
+      supports_vision: true
+      
+  - model_name: "chatgpt-4o-mini"
+    litellm_params:
+      model: "openai/gpt-4o-mini"
+      api_base: "https://api.aimlapi.com/v1"
+      api_key: "os.environ/AIMLAPI_KEY"
+    model_info:
+      description: "ChatGPT-4o-mini model via AIMLAPI - cost effective"
+      provider: "aimlapi"
+      max_tokens: 128000
+      supports_function_calling: true
+      
+  - model_name: "gpt-4-turbo"
+    litellm_params:
+      model: "openai/gpt-4-turbo"
+      api_base: "https://api.aimlapi.com/v1"
+      api_key: "os.environ/AIMLAPI_KEY"
+    model_info:
+      description: "GPT-4 Turbo model via AIMLAPI"
+      provider: "aimlapi"
+      max_tokens: 128000
+      supports_function_calling: true
+      supports_vision: true
+
+general_settings:
+  master_key: "sk-hWv1u2fX3yG4zJ5kT6p7qR8sT9uV0wX1"
+  database_url: "postgresql://llmproxy:bTBwUQHt7VTltFyB@34.136.3.30:5432/litellm"
+  store_model_in_db: true

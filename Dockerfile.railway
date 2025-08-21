@@ -1,0 +1,23 @@
+# LiteLLM Dockerfile for Railway Deployment
+# Using official LiteLLM image for simplicity and reliability
+
+FROM ghcr.io/berriai/litellm:main-stable
+
+# Set working directory
+WORKDIR /app
+
+# Copy Railway-specific configuration
+COPY railway_config.yaml /app/config.yaml
+
+# Expose port that Railway expects
+EXPOSE 4000
+
+# Railway will provide PORT environment variable, but LiteLLM uses 4000 by default
+ENV PORT=4000
+
+# Health check for Railway
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD wget --no-verbose --tries=1 http://localhost:4000/health/liveliness || exit 1
+
+# Start LiteLLM with configuration
+CMD ["litellm", "--config", "/app/config.yaml", "--port", "4000", "--host", "0.0.0.0"]

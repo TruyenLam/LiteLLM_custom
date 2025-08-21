@@ -1,0 +1,115 @@
+# LiteLLM Configuration for AIMLAPI Integration
+# Optimized for Railway deployment
+
+model_list:
+  # AIMLAPI Models via OpenAI-compatible endpoint
+  - model_name: chatgpt-4o-latest
+    litellm_params:
+      model: openai/gpt-4o-latest
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "ChatGPT-4o Latest via AIMLAPI - Most capable model"
+      max_tokens: 128000
+      supports_function_calling: true
+      supports_vision: true
+
+  - model_name: chatgpt-4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "ChatGPT-4o via AIMLAPI - Most capable model"
+      max_tokens: 128000
+      supports_function_calling: true
+      supports_vision: true
+
+  - model_name: chatgpt-4o-mini
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "ChatGPT-4o-mini via AIMLAPI - Cost effective"
+      max_tokens: 128000
+      supports_function_calling: true
+
+  - model_name: gpt-4-turbo
+    litellm_params:
+      model: openai/gpt-4-turbo
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "GPT-4 Turbo via AIMLAPI - High performance"
+      max_tokens: 128000
+      supports_function_calling: true
+      supports_vision: true
+
+  - model_name: claude-3-5-sonnet
+    litellm_params:
+      model: openai/claude-3-5-sonnet-20241022
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "Claude 3.5 Sonnet via AIMLAPI - Excellent reasoning"
+      max_tokens: 200000
+      supports_function_calling: true
+
+  - model_name: gemini-1-5-pro
+    litellm_params:
+      model: openai/gemini-1.5-pro-latest
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "Gemini 1.5 Pro via AIMLAPI - Google's flagship model"
+      max_tokens: 2097152
+      supports_function_calling: true
+
+  # Additional popular models
+  - model_name: llama-3-1-70b
+    litellm_params:
+      model: openai/meta-llama/llama-3.1-70b-instruct
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "Llama 3.1 70B via AIMLAPI - Meta's advanced model"
+      max_tokens: 128000
+
+  - model_name: llama-3-1-8b
+    litellm_params:
+      model: openai/meta-llama/llama-3.1-8b-instruct
+      api_base: https://api.aimlapi.com/v1
+      api_key: os.environ/AIMLAPI_KEY
+    model_info:
+      description: "Llama 3.1 8B via AIMLAPI - Fast and efficient"
+      max_tokens: 128000
+
+litellm_settings:
+  drop_params: true
+  num_retries: 3
+  request_timeout: 300
+  telemetry: false
+  success_callback: ["prometheus"]
+  failure_callback: ["prometheus"]
+
+general_settings:
+  # Store models in database for dynamic management
+  store_model_in_db: true
+  
+  # Master key for authentication
+  master_key: os.environ/LITELLM_MASTER_KEY
+  
+  # Database URL for persistence
+  database_url: os.environ/DATABASE_URL
+  
+  # Health check settings
+  health_check_interval: 300
+  
+  # Logging
+  set_verbose: false
+
+# Environment variables that Railway should set:
+# AIMLAPI_KEY=your_aimlapi_key
+# LITELLM_MASTER_KEY=your_master_key  
+# DATABASE_URL=your_postgresql_url
