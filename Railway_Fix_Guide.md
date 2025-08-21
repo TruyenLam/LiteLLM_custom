@@ -47,7 +47,9 @@ git push
 ```
 AIMLAPI_KEY=b0197edcd9104cd1ab78aaf148ce609a
 LITELLM_MASTER_KEY=sk-hWv1u2fX3yG4zJ5kT6p7qR8sT9uV0wX1
+LITELLM_SALT_KEY=sk-aB2c3D4eF5g6H7i8J9k0L1m2N3o4P5qR
 DATABASE_URL=postgresql://llmproxy:bTBwUQHt7VTltFyB@34.136.3.30:5432/litellm
+STORE_MODEL_IN_DB=True
 ```
 
 ### 4. Test deployment:

@@ -5,8 +5,7 @@
     "dockerfilePath": "Dockerfile.simple"
   },
   "deploy": {
-    "numReplicas": 1,
-    "sleepApplication": false,
+    "sleepApplication": true,
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }

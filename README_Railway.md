@@ -38,7 +38,9 @@ cd LiteLLM_custom
    ```
    AIMLAPI_KEY=your_aimlapi_key
    LITELLM_MASTER_KEY=your_chosen_master_key
+   LITELLM_SALT_KEY=your_salt_key
    DATABASE_URL=postgresql://user:pass@host:port/db
+   STORE_MODEL_IN_DB=True
    ```
 3. Railway sẽ tự động deploy từ `Dockerfile.railway`
 
@@ -48,7 +50,9 @@ cd LiteLLM_custom
 |----------|-------------|----------|
 | `AIMLAPI_KEY` | API key từ AIMLAPI | ✅ |
 | `LITELLM_MASTER_KEY` | Master key cho authentication | ✅ |
+| `LITELLM_SALT_KEY` | Salt key cho encryption/decryption | ✅ |
 | `DATABASE_URL` | PostgreSQL connection string | ✅ |
+| `STORE_MODEL_IN_DB` | Store models in database | ✅ |
 
 ## 📡 API Usage
 
