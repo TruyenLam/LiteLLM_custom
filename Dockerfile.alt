@@ -1,0 +1,23 @@
+# Alternative LiteLLM Dockerfile for Railway
+FROM python:3.11-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install LiteLLM
+RUN pip install litellm[proxy]
+
+# Set working directory
+WORKDIR /app
+
+# Copy configuration
+COPY railway_config.yaml /app/config.yaml
+
+# Expose port
+EXPOSE 4000
+
+# Start LiteLLM proxy
+CMD ["litellm", "--config", "/app/config.yaml", "--port", "4000", "--host", "0.0.0.0"]

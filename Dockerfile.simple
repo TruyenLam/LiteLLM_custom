@@ -1,0 +1,11 @@
+# Simple LiteLLM Dockerfile for Railway
+FROM ghcr.io/berriai/litellm:main-stable
+
+# Copy configuration
+COPY railway_config.yaml /app/config.yaml
+
+# Set environment variables
+ENV PORT=4000
+
+# Start LiteLLM
+CMD ["--config", "/app/config.yaml"]
